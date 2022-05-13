@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.js",
-    "lint": "npx eslint src/**"
+    "lint": "npx eslint src/**",
+    "seed": "cd ./src/database && npx sequelize db:seed:all",
+    "db:delete": "cd ./src/database && npx sequelize db:drop",
+    "db:create": "cd ./src/database && npx sequelize db:create && npx sequelize db:migrate && npm run seed"
   },
   "repository": {
     "type": "git",
@@ -24,7 +27,9 @@
     "express": "^4.18.1",
     "joi": "^17.6.0",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "eslint": "^8.15.0"
