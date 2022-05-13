@@ -1,6 +1,6 @@
 # Task Manager
 
-  Api para gerenciamento de tarefas, esse projeto faz parte do desafio técnico para a empresa fictícia Ebytr, mais informações [aqui](readme link).
+  Api para gerenciamento de tarefas, esse projeto faz parte do desafio técnico para a empresa fictícia Ebytr, mais informações [aqui](https://github.com/LaizaBertelli/ebytr-dt).
 
 
 # Banco de Dados
