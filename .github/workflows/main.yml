@@ -1,0 +1,19 @@
+on: [push, pull_request]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify git repository
+        uses: actions/checkout@v2
+
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint
+        run: npx eslint src/**
