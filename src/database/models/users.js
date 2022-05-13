@@ -3,7 +3,7 @@ const Users = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-  });
+  }, { timestamps: false, underscored: true });
 
   Users.associate = (models) => {
     Users.hasMany(models.Tasks, { foreignKey: 'userId', as: 'UserTasks' });

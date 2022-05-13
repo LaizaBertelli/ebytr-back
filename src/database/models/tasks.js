@@ -4,7 +4,7 @@ const Tasks = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     description: DataTypes.STRING,
     title: DataTypes.STRING,
-  });
+  }, { timestamps: false, underscored: true });
 
   Tasks.associate = (models) => {
     Tasks.belongsTo(models.Users, { foreignKey: 'userId', as: 'user' });
