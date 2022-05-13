@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.js",
-    "lint": "npx eslint src/**"
+    "lint": "npx eslint src/**",
+    "seed": "cd ./src/database && npx sequelize db:seed:all",
+    "db:delete": "cd ./src/database && npx sequelize db:drop",
+    "db:create": "cd ./src/database && npx sequelize db:create && npx sequelize db:migrate && npm run seed"
   },
   "repository": {
     "type": "git",
