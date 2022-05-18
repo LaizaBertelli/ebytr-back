@@ -6,21 +6,21 @@ module.exports = {
       {
         username: 'fulano',
         email: 'fulano@gmail.com',
-        password: 'fulano_password',
+        password: 'ZnVsYW5vX3Bhc3N3b3Jk', // fulano_password
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       {
         username: 'ciclano',
         email: 'ciclano@gmail.com',
-        password: 'ciclano_password',
+        password: 'Y2ljbGFub19wYXNzd29yZA==', // ciclano_password
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       {
         username: 'beltrano',
         email: 'beltrano@gmail.com',
-        password: 'beltrano_password',
+        password: 'YmVsdHJhbm9fcGFzc3dvcmQ=', // beltrano_password
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
       },
