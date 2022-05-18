@@ -1,9 +1,17 @@
-require('dotevn').config();
-const jwt = require('jasonwebtoken');
+require('dotenv').config();
+
+const jwt = require('jsonwebtoken');
 
 const jwtConfig = {
   expiresIn: '7d',
   algorithm: 'HS256',
 };
 
-module.exports = (payload) => (jwt.sign({ payload }, process.env.SECRET, jwtConfig));
+const generateToken = (payload) => {
+  console.log(payload)
+  return jwt.sign({payload}, 'GALO', jwtConfig);
+}
+
+module.exports = {
+  generateToken,
+};
