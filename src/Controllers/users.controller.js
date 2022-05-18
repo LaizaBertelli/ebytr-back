@@ -26,7 +26,19 @@ const getById = async (req, res, next) => {
   }
 }
 
+const create = async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body;
+    const newUser = await UsersService.create(email, username, password);
+
+    return res.status(201).json(newUser);
+  } catch (e) {
+    return next(e);
+  }
+}
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
