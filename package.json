@@ -28,6 +28,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
+    "node-encoder": "^2.0.4",
     "nodemon": "^2.0.16",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1"
