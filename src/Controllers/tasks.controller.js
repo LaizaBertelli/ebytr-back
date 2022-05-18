@@ -25,7 +25,20 @@ const create = async (req, res, next) => {
   }
 }
 
+const edit = async (req, res, next) => {
+  try {
+    const { title, description, status } = req.body;
+    const { id } = req.params;
+    await TasksService.edit(id, status, description, title);
+
+    return res.status(201).end();
+  } catch (e) {
+    return next(e);
+  }
+}
+
 module.exports = {
   getAll,
   create,
+  edit,
 };
