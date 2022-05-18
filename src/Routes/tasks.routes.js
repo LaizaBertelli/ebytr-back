@@ -6,5 +6,6 @@ const route = express();
 
 route.get('/:id', TasksController.getAll);
 route.post('/:id', validateTasks, TasksController.create);
+route.put('/:id', validateTasks, TasksController.edit);
 
 module.exports = route;
