@@ -1,4 +1,5 @@
 const { TasksSchema } = require("../Schemas/tasks.schema");
+const UsersService = require('../Services/users.service');
 
 const validateTasks = (req, res, next) => {
   const { status, description, title  } = req.body;
@@ -12,6 +13,15 @@ const validateTasks = (req, res, next) => {
   return next();
 };
 
+const validateUserId = async (req, res, next) => {
+  const { id } = req.params;
+  const user = await UsersService.getById(id);
+  if (!user) return res.status(404).json({ message: 'Invalid user id' });
+
+  return next();
+}
+
 module.exports = {
   validateTasks,
+  validateUserId,
 };
