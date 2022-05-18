@@ -1,8 +1,4 @@
 /* eslint-disable no-unused-vars */
-const httpException = (status, message) => {
-  return { status, message};
-}
-
 const errorHandler = (error, _req, res, _next) => {
   const status = error.status || 500;
   const message = error.message || 'Something went wrong';
@@ -11,6 +7,5 @@ const errorHandler = (error, _req, res, _next) => {
 }
 
 module.exports = {
-  httpException,
   errorHandler,
 }
