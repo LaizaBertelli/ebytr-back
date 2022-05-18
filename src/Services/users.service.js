@@ -1,4 +1,5 @@
 const { Users } = require('../database/models');
+const encodePassword = require('../Helpers/encodePassword');
 
 const getAll = async () => {
   try {
@@ -24,7 +25,23 @@ const getById = async (id) => {
   }
 }
 
+const create = async (email, username, password) => {
+  try {
+    const encodedPassword = encodePassword(password);
+    const newUser = await Users.create({
+      username,
+      email,
+      password: encodedPassword,
+    });
+    
+    return newUser;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
