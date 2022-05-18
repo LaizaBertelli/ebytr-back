@@ -3,6 +3,7 @@ const UsersController = require('../Controllers/users.controller');
 
 const route = express();
 
-route.get('/', UsersController.getUsers);
+route.get('/', UsersController.getAll);
+route.get('/:id', UsersController.getById);
 
 module.exports = route;
