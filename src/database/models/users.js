@@ -5,10 +5,6 @@ const Users = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
   }, { timestamps: false, underscored: true });
 
-  Users.associate = (models) => {
-    Users.hasMany(models.Tasks, { foreignKey: 'userId', as: 'UserTasks' });
-  }
-
   return Users;
 };
 
