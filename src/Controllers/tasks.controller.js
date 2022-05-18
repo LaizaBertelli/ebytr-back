@@ -13,6 +13,19 @@ const getAll = async (req, res, next) => {
   }
 }
 
+const create = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { status, description, title} = req.body;
+    const newTask = await TasksService.create(id, status, description, title);
+
+    return res.status(201).json(newTask);
+  } catch (e) {
+    return next(e);
+  }
+}
+
 module.exports = {
   getAll,
+  create,
 };
