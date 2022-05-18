@@ -17,6 +17,22 @@ const getAll = async (id) => {
   }
 }
 
+const create = async (userId, status, description, title) => {
+  try {
+    const newTask = await Tasks.create({
+      userId,
+      status,
+      description,
+      title
+    });
+
+    return newTask;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 module.exports = {
   getAll,
+  create
 };
