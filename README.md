@@ -6,6 +6,16 @@
   Você pode acompanhar a api funcionando através deste link: [ebytr-task-manager](https://lb-task-manager.herokuapp.com/)
 
 
+# Sumário
+
+01. [Como Usar](#como-usar)
+01. [Banco de Dados](#banco-de-dados)
+01. [API](#api)
+
+    01. [Users](#users)
+    01. [Tasks](#tasks)
+    01. [Login](#login)
+
 # Como Usar
 
 Para rodar este app localmente:
@@ -122,6 +132,14 @@ Para rodar este app localmente:
       "title": "Homework"
     }
 
+<details>
+  <summary>Possiveis status code</summary>
+</details>
+
+<details>
+  <summary>Regras</summary>
+</details>
+
   ### Deletar Tarefa
 
   Recebe o id da tarefa e a deleta.
@@ -138,6 +156,13 @@ Para rodar este app localmente:
       "title": "Homework"
     }
 
+<details>
+  <summary>Possiveis status code</summary>
+</details>
+
+<details>
+  <summary>Regras</summary>
+</details>
 
 ## Login
 
@@ -178,6 +203,14 @@ Para rodar este app localmente:
           <td>Erro interno do servidor</td>
         </tr>
       </table>
+  </details>
+
+  <details>
+    <summary>Regras</summary>
+    <ul>
+      <li> O campo email deve ser um email válido e não pode estar vazio. </li>
+      <li> O campo password deve possuir pelo menos 6 caracteres e não pode estar vazio </li>
+    </ul>
   </details>
 
 
