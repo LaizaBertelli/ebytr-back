@@ -11,6 +11,10 @@ const app = express();
 app.use(express.json());
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+  return res.status(200).json('Welcome to task manager api');
+})
+
 app.use('/login', LoginRouter);
 app.use('/users', UsersRouter);
 app.use('/tasks', TasksRouter);
