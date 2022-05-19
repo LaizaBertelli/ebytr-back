@@ -19,6 +19,13 @@ app.use('/login', LoginRouter);
 app.use('/users', UsersRouter);
 app.use('/tasks', TasksRouter);
 
+// Enable CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
