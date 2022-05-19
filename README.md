@@ -59,7 +59,9 @@ Para rodar este app localmente:
 # API
 
   ## Users
-  ### Todos os usuários
+  <br>
+
+  ## Todos os usuários 
 
   Retorna todos os usuários cadastrados no banco de dados.
 
@@ -78,7 +80,32 @@ Para rodar este app localmente:
         {...}
       ]
     }
-  ### Usuário por id
+
+<details>
+  <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Nenhum usuário encontrado</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
+</details>
+
+  <br>
+
+  ## Usuário por id
 
   Recebe um id e retorna o usuário encontrado com este id.
 
@@ -94,11 +121,81 @@ Para rodar este app localmente:
       }
     }
 
-  ## Tasks
-  
-  ### Todas as Tasks
+<details>
+  <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Nenhum usuário encontrado com esse id</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
+</details>
+<br>
 
-  Recebe o id de um usuário e retorna uma lista com as tarefas cadastradas.
+## Criar usuário
+
+  Recebe email, senha, nome e cria um novo usuário.
+
+      POST /users/
+
+  Resposta:
+
+      {
+        "id": 26,
+        "username": "newuser",
+        "email": "newuser@host.com",
+        "password": "Z2FsbzEzZ2Fsbw=="
+      }
+
+<details>
+  <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>201</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td>Senha, email ou nome de usuário inválidos ou vazios</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
+</details>
+<details>
+  <summary>Regras</summary>
+  <ul>
+    <li>O campo email deve ser um email válido e não pode estar vazio</li>
+    <li>O campo username deve ter entre 4 e 10 caracteres e não pode estar vazio</li>
+    <li>O campo password deve ter pelo menos 6 caracteres e não pode estar vazio</li>
+  <ul>
+</details>
+<br>
+
+  ## Tasks
+  <br>
+
+  ## Todas as Tasks
+
+  Recebe o id de um usuário e retorna uma lista com as tarefas pertencentes a ele.
 
      GET /tasks/?id=13
 
@@ -116,29 +213,125 @@ Para rodar este app localmente:
       ...
      ]
 
+
+<details>
+  <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Nenhuma tarefa encontrada</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
+</details>
+<br>
+
   ### Editar Tarefa
 
   Recebe o id da task e um objeto com os campos à serem editados e retorna a tarefa atualizada.
 
     PUT /tasks/?id=0
 
-  Resposta:
+
+
+<details>
+  <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td>Requisição efetuada com algum campo vazio</td>
+    </tr>
+    <tr>
+      <td>401</td>
+      <td>Campos Title ou Description são grandes de mais ou curtos de mais</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
+</details>
+<details>
+  <summary>Regras</summary>
+  <ul>
+    <li>O campo status não pode estar vazio e deve ser do tipo string</li>
+    <li>O campo title deve ser uma string com tamanho entre 4 e 25 caracteres e não pode estar vazio</li>
+    <li>O campo description deve ser uma string com no máximo 140 caracteres, este campo não é obrigatório</li>
+  </ul>
+</details>
+
+<br>
+
+  ### Criar Tarefa
+
+  Recebe status, title, description e id do usuário, cria uma nova tarefa e a retorna.
+
+    POST /tasks/?id=13
+
+Resposta:
 
     {
-      "id": 0,
+      "id": 5,
       "userId": 13,
-      "status": "progress",
-      "description": "Do portuguese presentation",
-      "title": "Homework"
+      "status": done,
+      "description": "Terminar readme do projeto",
+      "title": "Documentação"
     }
 
 <details>
   <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>201</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td>Requisição efetuada com algum campo vazio</td>
+    </tr>
+    <tr>
+      <td>401</td>
+      <td>Campos Title ou Description são grandes de mais ou curtos de mais</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
 </details>
-
 <details>
   <summary>Regras</summary>
+  <ul>
+    <li>O campo status não pode estar vazio e deve ser do tipo string</li>
+    <li>O campo title deve ser uma string com tamanho entre 4 e 25 caracteres e não pode estar vazio</li>
+    <li>O campo description deve ser uma string com no máximo 140 caracteres, este campo não é obrigatório</li>
+  </ul>
 </details>
+
+<br>
 
   ### Deletar Tarefa
 
@@ -146,29 +339,37 @@ Para rodar este app localmente:
 
       DELETE /tasks/?id=13
 
-  Resposta:
-
-    {
-      "id": 0,
-      "userId": 13,
-      "status": "progress",
-      "description": "Do portuguese presentation",
-      "title": "Homework"
-    }
 
 <details>
   <summary>Possiveis status code</summary>
+<table>
+    <tr>
+      <th>Status</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td>Requisição efetuada com sucesso</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Nenhuma tarefa encontrada sob este id</td>
+    </tr>
+    <tr>
+      <td>500</td>
+      <td>Erro interno do servidor</td>
+    </tr>
+  </table>
 </details>
 
-<details>
-  <summary>Regras</summary>
-</details>
+<br>
 
 ## Login
+<br>
 
   ### Efetuar login
   
-  Receve o email e a senha do usuário e efetua login.
+  Recebe o email e a senha do usuário e efetua login.
   
     POST /login/
 
