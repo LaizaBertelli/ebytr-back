@@ -48,8 +48,19 @@ const edit = async (id, status, description, title) => {
   }
 }
 
+const deleteTask = async (id) => {
+  try {
+    const deleted = await Tasks.destroy({ where: { id: id }});
+    
+    return deleted;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 module.exports = {
   getAll,
   create,
   edit,
+  deleteTask,
 };
