@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "buil": "npx sequelize db:migrate --env production && npm run seed --env production",
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
     "lint": "npx eslint src/**",
