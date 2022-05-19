@@ -31,7 +31,20 @@ const edit = async (req, res, next) => {
     const { id } = req.params;
     await TasksService.edit(id, status, description, title);
 
-    return res.status(201).end();
+    return res.status(204).end();
+  } catch (e) {
+    return next(e);
+  }
+}
+
+const deleteTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deleted = await TasksService.deleteTask(id);
+
+    if (!deleted) return res.status(404).json({ message: 'Task not found' });
+
+    return res.status(204).end();
   } catch (e) {
     return next(e);
   }
@@ -41,4 +54,5 @@ module.exports = {
   getAll,
   create,
   edit,
+  deleteTask,
 };
