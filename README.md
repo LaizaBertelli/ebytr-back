@@ -19,29 +19,50 @@
 # API
 
   ## Users
-  ### GET user by Id
+  ### Todos os usuários
 
-  Recebe um id e retorna o usuário encontrado.
+  Retorna todos os usuários cadastrados no banco de dados.
+
+      GET: /users/
+    
+  Resposta:
+
+      {
+        "users": [
+        {
+          "id": 13,
+          "username": "fulano",
+          "email": "emaildofulano@host.com"
+        },
+        ...,
+        {...}
+      ]
+    }
+  ### Usuário por id
+
+  Recebe um id e retorna o usuário encontrado com este id.
 
     GET: /user/?id=0
 
-  Response:
+  Resposta:
 
     {
-      "id": 0,
-      "username": "user",
-      "email": "user@email.com"
+      "user" : {
+        "id": 0,
+        "username": "user",
+        "email": "user@email.com"
+      }
     }
 
   ## Tasks
   
-  ### GET Tasks
+  ### Todas as Tasks
 
-  Recebe o id do usuário e retorna uma lista com as tarefas cadastradas.
+  Recebe o id de um usuário e retorna uma lista com as tarefas cadastradas.
 
-      /tasks/?id=13
+     GET /tasks/?id=13
 
-  Response:
+  Resposta:
 
      [
         {
@@ -55,13 +76,13 @@
       ...
      ]
 
-  ### Edit Task
+  ### Editar Tarefa
 
   Recebe o id da task e um objeto com os campos à serem editados e retorna a tarefa atualizada.
 
     PUT /tasks/?id=0
 
-  Response:
+  Resposta:
 
     {
       "id": 0,
@@ -71,6 +92,63 @@
       "title": "Homework"
     }
 
+  ### Deletar Tarefa
+
+  Recebe o id da tarefa e a deleta.
+
+      DELETE /tasks/?id=13
+
+  Resposta:
+
+    {
+      "id": 0,
+      "userId": 13,
+      "status": "progress",
+      "description": "Do portuguese presentation",
+      "title": "Homework"
+    }
+
+
+## Login
+
+  ### Efetuar login
+  
+  Receve o email e a senha do usuário e efetua login.
+  
+    POST /login/
+
+  Respota:
+
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImZ1bGFubyIsImVtYWlsIjoiZnVsYW5vQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NTI5MDM4NDMsImV4cCI6MTY1MzUwODY0M30.gJl1CewL2rcev8jE8OwlKhT1z-zCbCtlu5R_LPyJQGk"
+    }
+
+
+  <details>
+    <summary>Possiveis status code</summary>
+      <table>
+        <tr>
+          <th>Status</th>
+          <th>Descrição</th>
+        </tr>
+        <tr>
+          <td>200</td>
+          <td>Requisição efetuada com sucesso</td>
+        </tr>
+        <tr>
+          <td>400</td>
+          <td>Requisição efetuada com algum campo vazio</td>
+        </tr>
+        <tr>
+          <td>401</td>
+          <td>Email ou senha inválidos</td>
+        </tr>
+        <tr>
+          <td>500</td>
+          <td>Erro interno do servidor</td>
+        </tr>
+      </table>
+  </details>
 
 
   <!-- <table>
