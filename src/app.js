@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  return res.status(200).json('Welcome to task manager api');
+  return res.status(200).json('Welcome to task manager api, these are the available endpoints: users, tasks, login');
 })
 
 app.use('/login', LoginRouter);
