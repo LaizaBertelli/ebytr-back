@@ -16,7 +16,7 @@ module.exports = {
     dialect: 'mysql',
   },
   production: {
-    use_env_variable: process.env.CLEARDB_DATABASE_URL,
+    use_env_variable: process.env.USE_ENV_VARIABLE || 'CLEARDB_DATABASE_URL',
     dialect: 'mysql',
   }
 }
