@@ -1,6 +1,43 @@
 # Task Manager
 
-  Api para gerenciamento de tarefas, esse projeto faz parte do desafio técnico para a empresa fictícia Ebytr, mais informações [aqui](https://github.com/LaizaBertelli/ebytr-dt).
+  Api para gerenciamento de tarefas. Com essa API é possível cadastrar, editar e deletar tarefas, criar usuários e fazer login.
+  Esse projeto faz parte do desafio técnico para a empresa fictícia Ebytr, mais informações [aqui](https://github.com/LaizaBertelli/ebytr-dt).
+
+  Você pode acompanhar a api funcionando através deste link: [ebytr-task-manager](https://lb-task-manager.herokuapp.com/)
+
+
+# Como Usar
+
+Para rodar este app localmente:
+
+  01. Clone o repositório
+
+    git clone git@github.com:LaizaBertelli/ebytr-back.git
+
+  02. Entre no diretório do projeto
+
+    cd ebytr-back
+
+  03. Instale as dependências.
+
+    npm install
+
+  04. Crie um arquivo .env na raiz do projeto. Você pode renomear e editar o arquivo .env.example
+
+    PORT=listening_port
+    DB=data_base_name
+    DB_USER=your_sql_user
+    DB_HOST=your_host
+    DB_PASSWORD=your_sql_password
+    JWT_SECRET=palavra_secreta
+
+  05. Crie o banco de dados.
+
+    npm run db:create
+
+  06. Inicie a aplicação.
+
+    npm run start
 
 
 # Banco de Dados
@@ -8,13 +45,6 @@
 ## Estrutura
 
   ![db table structure](/assets/db_structure.png)
-
-## Script
-
-  Para popular o banco de dados, use esse script com dados fictícios.
-
-      # enter code here
-
 
 # API
 
