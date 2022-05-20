@@ -17,7 +17,7 @@ const postLogin = async (email, password) => {
     if (!user) return null;
 
     const token = generateToken(user);
-    return token;
+    return { token, user };
   } catch (e) {
     throw new Error(e);
   }
