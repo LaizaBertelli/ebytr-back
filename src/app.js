@@ -1,7 +1,6 @@
 require('dotenv');
 
 const express = require('express');
-const cors = require('cors');
 const { errorHandler } = require('./Middlewares/error.middleware');
 const LoginRouter = require('./Routes/login.routes');
 const UsersRouter = require('./Routes/users.routes');
@@ -9,7 +8,11 @@ const TasksRouter = require('./Routes/tasks.routes');
 
 const app = express();
 
-app.use(cors())
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(express.json());
 app.use(errorHandler);
 
@@ -22,6 +25,6 @@ app.use('/users', UsersRouter);
 app.use('/tasks', TasksRouter);
 
 const PORT = process.env.PORT || 3001;
-app.listen(3040, () => {
+app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
