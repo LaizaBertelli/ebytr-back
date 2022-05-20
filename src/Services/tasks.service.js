@@ -9,8 +9,6 @@ const getAll = async (id) => {
       }
     });
 
-    if (tasks.length === 0) return null;
-
     return tasks;
   } catch (e) {
     throw new Error(e);
